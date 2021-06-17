@@ -1,11 +1,24 @@
-import logo from './assets/logo.svg';
+// Routing
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from 'react-router-dom';
+
+// Pages
+import Header from './components/Header';
+import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-      <img src={logo} alt="" height="600" width="600"></img>
-    </div>
+    <Router>
+      <Header />
+      <Switch>
+        <Route path="/" component={HomePage} exact />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </Router>
   );
 }
 
