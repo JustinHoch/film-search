@@ -10,6 +10,7 @@ import {
 // Pages
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
+import MoviePage from './pages/MoviePage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Header />
       <Switch>
         <Route path="/" component={HomePage} exact />
+        <Route path="/movie/:name" component={MoviePage} />
         <Route component={NotFoundPage} />
       </Switch>
     </Router>
