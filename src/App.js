@@ -1,3 +1,5 @@
+
+
 // Routing
 import {
   BrowserRouter as Router,
@@ -11,6 +13,10 @@ import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
+
+  
+  
+
   return (
     <Router>
       <Header />
