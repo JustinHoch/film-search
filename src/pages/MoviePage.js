@@ -20,7 +20,7 @@ function MoviePage({ match }) {
       setIsLoaded(true);
     }
     getMovieDetails();
-  }, [movieId])
+  }, [movieId]);
 
   if(!isLoaded){
     return (
@@ -30,9 +30,9 @@ function MoviePage({ match }) {
     )
   } else {
     return (
-      <main>
-        <div>
-          <img src={`http://image.tmdb.org/t/p/w1280${movieDetails.backdrop_path}`} alt="" />
+      <main className="bg-gray-600">
+        <div className="p-2">
+          <img className="rounded w-44" src={`http://image.tmdb.org/t/p/w342${movieDetails.poster_path}`} alt="" />
         </div>
       </main>
     )
