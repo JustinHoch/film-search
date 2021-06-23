@@ -10,6 +10,7 @@ function MovieCard({media}) {
       </Link>
       <div className="p-1 text-white">
         <h3 className="font-bold">{media.title}</h3>
+        <p>Movie</p>
         <p className="font-light text-sm">Release Date: {media.release_date}</p>
       </div>
     </div>

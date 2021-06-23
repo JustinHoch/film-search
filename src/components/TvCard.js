@@ -5,6 +5,7 @@ function TvCard({media}) {
       <img className="rounded" src={smPosterPath} alt="" />
       <div className="p-1 text-white">
         <h3 className="font-bold">{media.name}</h3>
+        <p>TV Show</p>
         <p className="font-light text-sm">Release Date: {media.first_air_date}</p>
       </div>
     </div>
