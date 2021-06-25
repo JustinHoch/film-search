@@ -9,7 +9,7 @@ export async function fetchTrendingMedia(){
 
 // Movie
 export async function fetchMovie(id){
-  const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US&append_to_response=release_dates,watch/providers`);
+  const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US&append_to_response=release_dates,watch/providers,credits`);
   const data = await res.json();
   return data;
 }

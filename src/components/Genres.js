@@ -1,6 +1,7 @@
 function Genres({ genres }) {
+  // TODO: Style genres
   return (
-    <p>Genres:&nbsp;
+    <p className="text-white mt-2">Genres:&nbsp;
       {genres.map(genre => {
         return genre.name + " ";
       })}

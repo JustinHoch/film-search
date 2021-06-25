@@ -9,6 +9,7 @@ import Loading from '../components/Loading';
 import Genres from '../components/Genres';
 import Overview from '../components/Overview';
 import WatchProviders from '../components/WatchProviders';
+import PersonCard from '../components/PersonCard';
 
 // Functions
 import { getCerts, getWatchProviders } from '../services/functions';
@@ -42,14 +43,16 @@ function MoviePage({ match }) {
 
     const watchProviders = getWatchProviders(movieDetails);
 
+    const cast = movieDetails.credits.cast;
+
     return (
       <main className="bg-gray-600">
         <div className="p-2 flex">
           <img className="rounded w-44 mr-2" src={`http://image.tmdb.org/t/p/w342${movieDetails.poster_path}`} alt="" />
           <div>
-            <h2 className="text-xl font-bold text-white">{movieDetails.title}</h2>
-            <p>Runtime: {movieDetails.runtime}min</p>
-            <p>Rating: {cert}</p>
+            <h2 className="text-xl font-bold text-green-500">{movieDetails.title}</h2>
+            <p className="text-white mt-2">Runtime: {movieDetails.runtime}min</p>
+            <p className="text-white mt-2">Rating: {cert}</p>
             <Genres genres={movieDetails.genres} />
           </div>
         </div>
@@ -57,7 +60,13 @@ function MoviePage({ match }) {
         <Overview overview={movieDetails.overview} />
 
         <WatchProviders providers={watchProviders} />
-        {/* TODO: Add cast */}
+
+        <h2 className="text-xl font-bold text-green-500 text-center">Cast</h2>
+        <div className="flex flex-wrap justify-evenly">
+          {cast.map((person, key)=>{
+            return <PersonCard key={key} media={person} />
+          })}
+        </div>
       </main>
     )
   }

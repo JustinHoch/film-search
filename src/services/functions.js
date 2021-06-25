@@ -25,8 +25,10 @@ export function getCerts(details){
 export function getWatchProviders(details){
   const providers = details["watch/providers"].results;
   if(providers["US"]){
-    console.log(providers["US"]);
-    return providers["US"];
+    const providersList = providers["US"];
+    delete providersList.link;
+    console.log(providersList);
+    return providersList;
   }else{
     console.log("no watch providers");
     return false;
