@@ -2,7 +2,16 @@
 import { useState, useEffect } from 'react';
 
 // API
-import * as api from '../services/api';
+import { fetchMovie } from '../services/api';
+
+// Components
+import Loading from '../components/Loading';
+import Genres from '../components/Genres';
+import Overview from '../components/Overview';
+import WatchProviders from '../components/WatchProviders';
+
+// Functions
+import { getCerts, getWatchProviders } from '../services/functions';
 
 function MoviePage({ match }) {
   // Get movie ID from URL
@@ -15,7 +24,7 @@ function MoviePage({ match }) {
   // UseEffect
   useEffect(() => {
     const getMovieDetails = async () => {
-      const movie = await api.fetchMovie(movieId);
+      const movie = await fetchMovie(movieId);
       setMovieDetails(movie);
       setIsLoaded(true);
     }
@@ -24,45 +33,14 @@ function MoviePage({ match }) {
 
   if(!isLoaded){
     return (
-      <main>
-        <h2>Loading...</h2>
-      </main>
+      <Loading />
     )
   } else {
     console.log(movieDetails);
 
-    // Certification TODO: Refactor into a service
-    const getCerts = (details) => {
-      const certs = details.release_dates.results.filter(cert => cert.iso_3166_1 === 'US');
-      const cert = [];
-      if(certs[0]){
-        certs[0].release_dates.forEach(element => {
-          if(element.certification !== ""){
-            cert.push(element.certification);
-          };
-        });
-        if(cert.length > 0){
-          console.log(cert[0]); //Update to return the rating
-          return cert[0];
-        }else{
-          console.log("All certs are empty strings"); //Update to return false if no rating
-        };
-      }else{
-        console.log("No US certs available");
-      }
-    }
     const cert = getCerts(movieDetails);
 
-    // Watch Providers TODO: Refactor into a service
-    const getWatchProviders = (details) => {
-      const watchProviders = details["watch/providers"].results;
-      if(watchProviders["US"]){
-        console.log(watchProviders["US"]); //Update to return array of watch providers
-      }else{
-        console.log("no watch providers");
-      };
-    }
-    getWatchProviders(movieDetails);
+    const watchProviders = getWatchProviders(movieDetails);
 
     return (
       <main className="bg-gray-600">
@@ -72,15 +50,14 @@ function MoviePage({ match }) {
             <h2 className="text-xl font-bold text-white">{movieDetails.title}</h2>
             <p>Runtime: {movieDetails.runtime}min</p>
             <p>Rating: {cert}</p>
+            <Genres genres={movieDetails.genres} />
           </div>
         </div>
 
-        <div className="p-2">
-          <h2 className="text-lg font-bold text-white">Overview</h2>
-          <p>{movieDetails.overview}</p>
-        </div>
+        <Overview overview={movieDetails.overview} />
 
-        {/* TODO: Add watch list */}
+        <WatchProviders providers={watchProviders} />
+        {/* TODO: Add cast */}
       </main>
     )
   }

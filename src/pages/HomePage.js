@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 // API
-import * as api from '../services/api';
+import { fetchTrendingMedia } from '../services/api';
 
 // Components
 import MovieCard from '../components/MovieCard';
@@ -18,7 +18,7 @@ function HomePage() {
   // On page load get trending media
   useEffect(() => { 
     const getTrendingMedia = async () => {
-      const media = await api.fetchTrendingMedia();
+      const media = await fetchTrendingMedia();
       setTrendingMedia(media);
       setIsLoaded(true);
     }
