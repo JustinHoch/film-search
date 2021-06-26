@@ -1,19 +1,20 @@
-// React Components
+// REACT COMPONENTS
 import { useState, useEffect } from 'react';
 
 // API
 import { fetchMovie } from '../services/api';
 
-// Components
+// COMPONENTS
 import Loading from '../components/Loading';
-import Genres from '../components/Genres';
+import MoviePageDetails from '../components/MoviePageDetails';
 import Overview from '../components/Overview';
 import WatchProviders from '../components/WatchProviders';
 import PersonCard from '../components/PersonCard';
 
-// Functions
+// FUNCTIONS
 import { getCerts, getWatchProviders } from '../services/functions';
 
+// RENDER PAGE
 function MoviePage({ match }) {
   // Get movie ID from URL
   const movieId = match.params.name;
@@ -32,30 +33,30 @@ function MoviePage({ match }) {
     getMovieDetails();
   }, [movieId]);
 
+  // Check if movie info is loaded
   if(!isLoaded){
     return (
       <Loading />
     )
+  // Render if movie info is loaded
   } else {
-    console.log(movieDetails);
 
+    // Get US certifications
     const cert = getCerts(movieDetails);
 
+    // Get US watch providers
     const watchProviders = getWatchProviders(movieDetails);
-
-    const cast = movieDetails.credits.cast;
 
     return (
       <main className="bg-gray-600">
-        <div className="p-2 flex">
-          <img className="rounded w-44 mr-2" src={`http://image.tmdb.org/t/p/w342${movieDetails.poster_path}`} alt="" />
-          <div>
-            <h2 className="text-xl font-bold text-green-500">{movieDetails.title}</h2>
-            <p className="text-white mt-2">Runtime: {movieDetails.runtime}min</p>
-            <p className="text-white mt-2">Rating: {cert}</p>
-            <Genres genres={movieDetails.genres} />
-          </div>
-        </div>
+
+        <MoviePageDetails
+          poster={movieDetails.poster_path}
+          title={movieDetails.title}
+          runtime={movieDetails.runtime}
+          cert={cert}
+          genres={movieDetails.genres}
+        />
 
         <Overview overview={movieDetails.overview} />
 
@@ -63,7 +64,7 @@ function MoviePage({ match }) {
 
         <h2 className="text-xl font-bold text-green-500 text-center">Cast</h2>
         <div className="flex flex-wrap justify-evenly">
-          {cast.map((person, key)=>{
+          {movieDetails.credits.cast.map((person, key)=>{
             return <PersonCard key={key} media={person} />
           })}
         </div>
