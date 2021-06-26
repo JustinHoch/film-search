@@ -13,3 +13,10 @@ export async function fetchMovie(id){
   const data = await res.json();
   return data;
 }
+
+// TV
+export async function fetchTV(id){
+  const res = await fetch(` https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}&language=en-US&append_to_response=content_ratings,watch/providers,credits`);
+  const data = await res.json();
+  return data;
+}

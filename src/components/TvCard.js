@@ -1,8 +1,13 @@
+// REACT COMPONENTS
+import { Link } from "react-router-dom"
+
 function TvCard({media}) {
-  const smPosterPath = `http://image.tmdb.org/t/p/w342${media.poster_path}`;
+  const smPosterPath = `http://image.tmdb.org/t/p/w342${media.poster_path}`
   return (
     <div className="w-40 m-2">
-      <img className="rounded" src={smPosterPath} alt="" />
+      <Link to={`/tv/${media.id}`}>
+        <img className="rounded" src={smPosterPath} alt="" />
+      </Link>
       <div className="p-1 text-white">
         <h3 className="font-bold">{media.name}</h3>
         <p>TV Show</p>
