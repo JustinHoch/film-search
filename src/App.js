@@ -1,5 +1,3 @@
-
-
 // Routing
 import {
   BrowserRouter as Router,
@@ -12,13 +10,10 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import MoviePage from './pages/MoviePage';
 import TVPage from './pages/TVPage';
+import PersonPage from './pages/PersonPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
-
-  
-  
-
   return (
     <Router>
       <Header />
@@ -26,6 +21,7 @@ function App() {
         <Route path="/" component={HomePage} exact />
         <Route path="/movie/:name" component={MoviePage} />
         <Route path="/tv/:name" component={TVPage} />
+        <Route path="/person/:name" component={PersonPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </Router>
