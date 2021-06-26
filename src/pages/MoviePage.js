@@ -9,7 +9,7 @@ import Loading from '../components/Loading';
 import MoviePageDetails from '../components/MoviePageDetails';
 import Overview from '../components/Overview';
 import WatchProviders from '../components/WatchProviders';
-import PersonCard from '../components/PersonCard';
+import Cast from '../components/Cast';
 
 // RENDER PAGE
 function MoviePage({ match }) {
@@ -53,12 +53,8 @@ function MoviePage({ match }) {
 
         <WatchProviders watchProviders={movieDetails["watch/providers"]} />
 
-        <h2 className="text-xl font-bold text-green-500 text-center">Cast</h2>
-        <div className="flex flex-wrap justify-evenly">
-          {movieDetails.credits.cast.map((person, key)=>{
-            return <PersonCard key={key} media={person} />
-          })}
-        </div>
+        <Cast cast={movieDetails.credits.cast} />
+        
       </main>
     )
   }
