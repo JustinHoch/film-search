@@ -1,44 +1,32 @@
-function WatchProviders({ providers }) {
+// COMPONENTS
+import ProvidersList from "./ProvidersList";
+
+// FUNCTIONS
+import { getWatchProviders } from "../services/functions";
+
+// RENDER COMPONENT
+function WatchProviders({ watchProviders }) {
+
+  // Get US watch providers
+  const providers = getWatchProviders(watchProviders)
+
+  // If there are any US watch providers
   if(providers){
     return (
       <div className="p-2">
         <h2 className="text-lg font-bold text-green-500 text-center">Watch Providers</h2>
 
-        <h3 className="text-md font-bold text-white">Stream</h3>
-        <div className="flex flex-wrap justify-evenly">
-          {providers.flatrate !== undefined ? providers.flatrate.map((element, key)=>{
-            const logoPath = `http://image.tmdb.org/t/p/w300${element.logo_path}`
-            return (
-              <div className="w-16 m-2" key={key}>
-                <img className="rounded-lg" src={logoPath} alt=""></img>
-              </div>
-            );
-          }):<div><p>No Streaming Available</p></div>}
-        </div>
+        {providers.flatrate !== undefined ? (
+          <ProvidersList providers={providers.flatrate} type="Stream" />
+        ):null}
 
-        <h3 className="text-md font-bold text-white">Rent</h3>
-        <div className="flex flex-wrap justify-start">
-          {providers.rent !== undefined ? providers.rent.map((element, key)=>{
-            const logoPath = `http://image.tmdb.org/t/p/w300${element.logo_path}`
-            return (
-              <div className="w-16 m-2" key={key}>
-                <img className="rounded-lg" src={logoPath} alt=""></img>
-              </div>
-            );
-          }):<div><p>No Renting Available</p></div>}
-        </div>
+        {providers.rent !== undefined ? (
+          <ProvidersList providers={providers.rent} type="Rent" />
+        ):null}
 
-        <h3 className="text-md font-bold text-white">Buy</h3>
-        <div className="flex flex-wrap justify-start">
-          {providers.buy !== undefined ? providers.buy.map((element, key)=>{
-            const logoPath = `http://image.tmdb.org/t/p/w300${element.logo_path}`
-            return (
-              <div className="w-16 m-2" key={key}>
-                <img className="rounded-lg" src={logoPath} alt=""></img>
-              </div>
-            );
-          }):<div><p>No Buying Options Available</p></div>}
-        </div>
+        {providers.buy !== undefined ? (
+          <ProvidersList providers={providers.buy} type="Buy" />
+        ):null}
 
       </div>
     )

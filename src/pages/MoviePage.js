@@ -11,9 +11,6 @@ import Overview from '../components/Overview';
 import WatchProviders from '../components/WatchProviders';
 import PersonCard from '../components/PersonCard';
 
-// FUNCTIONS
-import { getWatchProviders } from '../services/functions';
-
 // RENDER PAGE
 function MoviePage({ match }) {
   // Get movie ID from URL
@@ -41,9 +38,6 @@ function MoviePage({ match }) {
   // Render if movie info is loaded
   } else {
 
-    // Get US watch providers
-    const watchProviders = getWatchProviders(movieDetails["watch/providers"]);
-
     return (
       <main className="bg-gray-600">
 
@@ -57,7 +51,7 @@ function MoviePage({ match }) {
 
         <Overview overview={movieDetails.overview} />
 
-        <WatchProviders providers={watchProviders} />
+        <WatchProviders watchProviders={movieDetails["watch/providers"]} />
 
         <h2 className="text-xl font-bold text-green-500 text-center">Cast</h2>
         <div className="flex flex-wrap justify-evenly">
