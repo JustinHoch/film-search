@@ -1,6 +1,14 @@
+// COMPONENTS
 import Genres from "./Genres"
 
-function MoviePageDetails({ poster, title, runtime, cert, genres }) {
+// FUNCTIONS
+import { getCerts } from '../services/functions'
+
+function MoviePageDetails({ poster, title, runtime, certifications, genres }) {
+
+   // Get US certifications
+   const cert = getCerts(certifications);
+
   return (
     <div className="p-2 flex">
       <img className="rounded w-44 mr-2" src={`http://image.tmdb.org/t/p/w342${poster}`} alt="" />

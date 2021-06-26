@@ -12,7 +12,7 @@ import WatchProviders from '../components/WatchProviders';
 import PersonCard from '../components/PersonCard';
 
 // FUNCTIONS
-import { getCerts, getWatchProviders } from '../services/functions';
+import { getWatchProviders } from '../services/functions';
 
 // RENDER PAGE
 function MoviePage({ match }) {
@@ -41,11 +41,8 @@ function MoviePage({ match }) {
   // Render if movie info is loaded
   } else {
 
-    // Get US certifications
-    const cert = getCerts(movieDetails);
-
     // Get US watch providers
-    const watchProviders = getWatchProviders(movieDetails);
+    const watchProviders = getWatchProviders(movieDetails["watch/providers"]);
 
     return (
       <main className="bg-gray-600">
@@ -54,7 +51,7 @@ function MoviePage({ match }) {
           poster={movieDetails.poster_path}
           title={movieDetails.title}
           runtime={movieDetails.runtime}
-          cert={cert}
+          certifications={movieDetails.release_dates}
           genres={movieDetails.genres}
         />
 
