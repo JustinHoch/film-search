@@ -1,8 +1,14 @@
 // REACT COMPONENTS
 import { Link } from "react-router-dom"
 
+// Missing image
+import missingImage from '../assets/missing-image.jpg'
+
 function TvCard({media}) {
-  const smPosterPath = `http://image.tmdb.org/t/p/w342${media.poster_path}`
+  let smPosterPath = `http://image.tmdb.org/t/p/w342${media.poster_path}`
+  if(!media.poster_path){
+    smPosterPath = missingImage;
+  }
   return (
     <div className="w-40 m-2">
       <Link to={`/tv/${media.id}`}>
