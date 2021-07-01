@@ -10,12 +10,12 @@ function MovieCard({media}) {
     smPosterPath = missingImage;
   }
   return (
-    <div className="w-40 m-2">
+    <div className="w-40 m-2 shadow-lg rounded bg-gray-800">
       <Link to={`/movie/${media.id}`}>
-        <img className="rounded" src={smPosterPath} alt="" />
+        <img className="rounded-t" src={smPosterPath} alt="" />
       </Link>
       <div className="p-1 text-white">
-        <h3 className="font-bold">{media.title}</h3>
+        <h3 className="font-bold text-green-500">{media.title}</h3>
         <p>Movie</p>
         <p className="font-light text-sm">Release Date: {media.release_date}</p>
       </div>

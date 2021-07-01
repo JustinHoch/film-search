@@ -10,12 +10,12 @@ function PersonCard({media}) {
     smPosterPath = missingImage;
   }
   return (
-    <div className="w-40 p-2">
+    <div className="w-40 m-2 shadow-lg rounded bg-gray-800">
       <Link to={`/person/${media.id}`}>
-        <img className="rounded" src={smPosterPath} alt="" />
+        <img className="rounded-t" src={smPosterPath} alt="" />
       </Link>
       <div className="p-1 text-white">
-        <h3 className="font-bold">{media.name}</h3>
+        <h3 className="font-bold text-green-500">{media.name}</h3>
         {media.character ? (
           <p>{media.character}</p>
         ):null}
