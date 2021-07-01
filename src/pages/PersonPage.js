@@ -36,6 +36,8 @@ function PersonPage({ match }) {
   // Render if movie info is loaded
   } else {
 
+    console.log(personDetails)
+
     const knownForByPopularity = personDetails.combined_credits.cast.sort((a, b) => {
       return b.popularity - a.popularity
     })

@@ -36,7 +36,7 @@ function HomePage() {
     const results = trendingMedia.results;
     return (
       <main className="bg-gray-600">
-        <h2 className="text-2xl font-bold text-white text-center p-2">Trending Media</h2>
+        <h2 className="text-2xl font-bold text-green-500 text-center p-2">Trending Media</h2>
         <div className="p-2 flex flex-wrap justify-center">
           {/* TODO: Learn more about using conditionals in map (without return true I get a warning) */}
           {results.map(media => {
