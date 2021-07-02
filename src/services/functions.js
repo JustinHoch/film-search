@@ -9,14 +9,11 @@ export function getCerts(details){
       };
     });
     if(cert.length > 0){
-      console.log(cert[0]);
       return cert[0];
     }else{
-      console.log("All certs are empty strings");//TODO: Remove Console log
       return "N/A";
     };
   }else{
-    console.log("No US certs available");//TODO: Remove Console log
     return "N/A";
   }
 }
@@ -27,10 +24,8 @@ export function getWatchProviders(details){
   if(providers["US"]){
     const providersList = providers["US"];
     delete providersList.link;
-    console.log(providersList);
     return providersList;
   }else{
-    console.log("no watch providers");
     return false;
   };
 }

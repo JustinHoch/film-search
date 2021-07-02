@@ -27,3 +27,10 @@ export async function fetchPerson(id){
   const data = await res.json();
   return data;
 }
+
+// Search (Milti-Search)
+export async function fetchMultiSearch(query){
+  const res = await fetch(` https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${query}&page=1&include_adult=false`);
+  const data = await res.json();
+  return data;
+}

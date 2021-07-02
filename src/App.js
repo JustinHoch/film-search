@@ -12,6 +12,7 @@ import MoviePage from './pages/MoviePage';
 import TVPage from './pages/TVPage';
 import PersonPage from './pages/PersonPage';
 import NotFoundPage from './pages/NotFoundPage';
+import SearchResultsPage from './pages/SearchResultsPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/movie/:name" component={MoviePage} />
         <Route path="/tv/:name" component={TVPage} />
         <Route path="/person/:name" component={PersonPage} />
+        <Route path="/search/:name" component={SearchResultsPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </Router>
