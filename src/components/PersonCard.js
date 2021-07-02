@@ -13,7 +13,7 @@ function PersonCard({media}) {
   }
 
   return (
-    <div className="w-40 m-2 shadow-lg rounded bg-gray-800 transform hover:scale-105">
+    <div className="w-40 m-2 shadow-lg rounded bg-gray-800 transition duration-150 transform hover:scale-105">
       <Link to={`/person/${media.id}`}>
         <img className="rounded-t" src={smPosterPath} alt="" />
       </Link>
