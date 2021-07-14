@@ -10,14 +10,16 @@ import SearchBar from './SearchBar'
 function Header() {
   return (
     <header className="bg-gray-800 p-4 h-24s">
-      <div className="inline-block">
-        <Link to="/">
-          <img className="inline-block mr-3 h-10" src={logo} alt="logo"/>
-        </Link>
+      <div className="flex items-center">
+        <div>
+          <Link to="/">
+            <img className="inline-block mr-3 h-14" src={logo} alt="logo"/>
+          </Link>
+        </div>
+        <h1 className="text-white text-4xl">
+          Film Search
+        </h1>
       </div>
-      <h1 className="text-white text-4xl inline-block">
-        Film Search
-      </h1>
       <SearchBar />
     </header>
   )
