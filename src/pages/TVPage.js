@@ -7,7 +7,7 @@ import { fetchTV } from '../services/api'
 // COMPONENTS
 import Loading from '../components/Loading'
 import TvPageDetails from '../components/TvPageDetails'
-import Overview from '../components/Overview'
+import LongText from '../components/LongText'
 import WatchProviders from '../components/WatchProviders'
 import Cast from '../components/Cast'
 
@@ -49,7 +49,7 @@ function TVPage({ match }) {
           genres={tvDetails.genres}
         />
 
-        <Overview overview={tvDetails.overview} />
+        {tvDetails.overview ? <LongText heading='Overview' text={tvDetails.overview} /> : null}
 
         <WatchProviders watchProviders={tvDetails["watch/providers"]} />
 

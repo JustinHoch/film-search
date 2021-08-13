@@ -7,7 +7,7 @@ import { fetchPerson } from '../services/api'
 // Components
 import Loading from '../components/Loading'
 import PersonPageDetails from '../components/PersonPageDetails'
-import Biography from '../components/Biography'
+import LongText from '../components/LongText'
 import KnownFor from '../components/KnownFor'
 
 function PersonPage({ match }) {
@@ -51,7 +51,7 @@ function PersonPage({ match }) {
           place_of_birth={personDetails.place_of_birth}
         />
 
-        <Biography biography={personDetails.biography} />
+        {personDetails.biography ? <LongText heading='Biography' text={personDetails.biography} /> : null}
 
         <KnownFor knownFor={knownForByPopularity} />
       </main>

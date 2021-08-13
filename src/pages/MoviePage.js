@@ -7,9 +7,9 @@ import { fetchMovie } from '../services/api';
 // COMPONENTS
 import Loading from '../components/Loading';
 import MoviePageDetails from '../components/MoviePageDetails';
-import Overview from '../components/Overview';
 import WatchProviders from '../components/WatchProviders';
 import Cast from '../components/Cast';
+import LongText from '../components/LongText'
 
 // RENDER PAGE
 function MoviePage({ match }) {
@@ -49,7 +49,7 @@ function MoviePage({ match }) {
           genres={movieDetails.genres}
         />
 
-        <Overview overview={movieDetails.overview} />
+        {movieDetails.overview ? <LongText heading='Overview' text={movieDetails.overview} /> : null}
 
         <WatchProviders watchProviders={movieDetails["watch/providers"]} />
 
