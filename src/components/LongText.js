@@ -35,7 +35,7 @@ function LongText({ heading, text }) {
           <div className="flex justify-center">
             <button
               onClick={()=>textSwtich()}
-              className="bg-green-500 rounded-xl px-2 text-sm text-gray-800 font-bold">
+              className="bg-green-500 rounded-xl px-2 mt-1 text-sm text-gray-800 font-bold focus:outline-none">
                 {readMoreLinkText}
             </button>
           </div>

@@ -30,12 +30,12 @@ function SearchBar() {
 
   return (
     <div className="mt-4 rounded">
-      <form id="search-form" onSubmit={onSubmit}>
+      <form className="max-w-3xl" id="search-form" onSubmit={onSubmit}>
 
-        <label className="hidden" htmlFor="search-input">Search Movie, TV Show, or Person</label>
-        <input id="search-input" className="w-3/4 rounded-l pl-1" type="text" placeholder="Search Movie, TV Show, or Person" onChange={(e) => setQuery(e.target.value)}></input>
+        <label className="hidden" htmlFor="search-input">Search Media or Person</label>
+        <input id="search-input" className="w-4/5 rounded-l pl-1 focus:outline-none" type="text" placeholder="Search Media or Person" onChange={(e) => setQuery(e.target.value)}></input>
 
-        <button className="w-1/4 bg-green-600 text-white rounded-r" type="submit">Search</button>
+        <button className="w-1/5 bg-green-600 text-white rounded-r" type="submit">Search</button>
       </form>
     </div>
   )

@@ -42,18 +42,20 @@ function PersonPage({ match }) {
 
     return (
       <main className="bg-gray-600">
-        <PersonPageDetails
-          poster={personDetails.profile_path}
-          name={personDetails.name}
-          genderNum={personDetails.gender}
-          birthday={personDetails.birthday}
-          deathday={personDetails.deathday}
-          place_of_birth={personDetails.place_of_birth}
-        />
+        <div className="max-w-3xl mx-auto">
+          <PersonPageDetails
+            poster={personDetails.profile_path}
+            name={personDetails.name}
+            genderNum={personDetails.gender}
+            birthday={personDetails.birthday}
+            deathday={personDetails.deathday}
+            place_of_birth={personDetails.place_of_birth}
+          />
 
-        {personDetails.biography ? <LongText heading='Biography' text={personDetails.biography} /> : null}
+          {personDetails.biography ? <LongText heading='Biography' text={personDetails.biography} /> : null}
 
-        <KnownFor knownFor={knownForByPopularity} />
+          <KnownFor knownFor={knownForByPopularity} />
+        </div>
       </main>
     )
   }

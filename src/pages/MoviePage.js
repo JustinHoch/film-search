@@ -40,6 +40,7 @@ function MoviePage({ match }) {
 
     return (
       <main className="bg-gray-600">
+        <div className="max-w-3xl mx-auto">
 
         <MoviePageDetails
           poster={movieDetails.poster_path}
@@ -54,7 +55,7 @@ function MoviePage({ match }) {
         <WatchProviders watchProviders={movieDetails["watch/providers"]} />
 
         <Cast cast={movieDetails.credits.cast} />
-        
+        </div>
       </main>
     )
   }

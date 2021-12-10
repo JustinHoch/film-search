@@ -38,27 +38,29 @@ function SearchResultsPage({ match }) {
     const results = searchResults.results;
     return (
       <main className="bg-gray-600 min-h-screen">
-        <h2 className="text-2xl font-bold text-green-500 text-center p-2">Search Results for: {searchQuery}</h2>
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold text-green-500 text-center p-2">Search Results for: {searchQuery}</h2>
 
-        {results.length === 0 ? (
-          <div className="p-4">
-            <h3 className="text-xl font-bold text-green-500 text-center p-2">Sorry. No results were found.</h3>
-          </div>
-        ) : (
-          <div className="p-2 flex flex-wrap justify-center">
-            {/* TODO: Learn more about using conditionals in map (without return true I get a warning) */}
-            {results.map(media => {
-              if(media.media_type === "movie"){
-                return <MovieCard key={media.id} media={media} />
-              } else if(media.media_type === "tv"){
-                return <TvCard key={media.id} media={media} />
-              } else if(media.media_type === "person"){
-                return <PersonCard key={media.id} media={media} />
-              }
-              return true;
-            })}
-          </div>
-        )}
+          {results.length === 0 ? (
+            <div className="p-4">
+              <h3 className="text-xl font-bold text-green-500 text-center p-2">Sorry. No results were found.</h3>
+            </div>
+          ) : (
+            <div className="p-2 flex flex-wrap justify-center">
+              {/* TODO: Learn more about using conditionals in map (without return true I get a warning) */}
+              {results.map(media => {
+                if(media.media_type === "movie"){
+                  return <MovieCard key={media.id} media={media} />
+                } else if(media.media_type === "tv"){
+                  return <TvCard key={media.id} media={media} />
+                } else if(media.media_type === "person"){
+                  return <PersonCard key={media.id} media={media} />
+                }
+                return true;
+              })}
+            </div>
+          )}
+        </div>
       </main>
     )
   }

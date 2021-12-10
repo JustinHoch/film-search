@@ -39,21 +39,24 @@ function TVPage({ match }) {
   } else {
     return (
       <main className="bg-gray-600">
+        <div className="max-w-3xl mx-auto">
 
-        <TvPageDetails
-          poster={tvDetails.poster_path}
-          title={tvDetails.name}
-          contentRating={tvDetails.content_ratings.results}
-          runtime={tvDetails.episode_run_time}
-          numberOfSeasons={tvDetails.number_of_seasons}
-          genres={tvDetails.genres}
-        />
+          <TvPageDetails
+            poster={tvDetails.poster_path}
+            title={tvDetails.name}
+            contentRating={tvDetails.content_ratings.results}
+            runtime={tvDetails.episode_run_time}
+            numberOfSeasons={tvDetails.number_of_seasons}
+            genres={tvDetails.genres}
+          />
 
-        {tvDetails.overview ? <LongText heading='Overview' text={tvDetails.overview} /> : null}
+          {tvDetails.overview ? <LongText heading='Overview' text={tvDetails.overview} /> : null}
 
-        <WatchProviders watchProviders={tvDetails["watch/providers"]} />
+          <WatchProviders watchProviders={tvDetails["watch/providers"]} />
 
-        <Cast cast={tvDetails.credits.cast} />
+          <Cast cast={tvDetails.credits.cast} />
+          
+        </div>
       </main>
     )
   }
